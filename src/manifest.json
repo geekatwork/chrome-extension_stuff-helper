@@ -1,0 +1,40 @@
+{
+  "manifest_version": 3,
+  "name": "Stuff Helper",
+  "description": "Some tweaks for Stuff. Remove adds, paid content, and more.",
+  "version": "0.1.1",
+
+  "permissions": [
+    "storage"
+  ],
+
+  "content_scripts": [
+  {
+    "matches": [
+      "https://www.stuff.co.nz/*"
+    ],
+    "js": [
+      "assets/js/jquery-3.6.0.min.js",
+      "assets/js/stuff_helper.root.js",
+      "assets/js/stuff_helper.cleanup.js"
+    ],
+    "run_at": "document_end"
+  }],
+
+  "web_accessible_resources": [{
+    "resources": [],
+    "matches": ["https://www.stuff.co.nz/*"]
+  }],
+
+  "icons": {
+    "16": "assets/img/logo16.png",
+    "32": "assets/img/logo32.png",
+    "48": "assets/img/logo48.png",
+    "64": "assets/img/logo64.png",
+    "128": "assets/img/logo128.png"
+  },
+
+  "options_ui": {
+    "page": "assets/html/options.html"
+  }
+}

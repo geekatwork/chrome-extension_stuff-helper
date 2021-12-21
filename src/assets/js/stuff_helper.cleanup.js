@@ -20,10 +20,14 @@ stuff_helper = (function (stuff_helper, document) {
                 '.display-ad--border-container',
                 '.teads-inread',
                 '.display-ad',
+                '.ad',
                 '#neighbourlyShowcasePlus',
                 '#gutterleft',
                 '#gutterright',
-                '#pushdownbanner'
+                '#pushdownbanner',
+                '.article-offer',
+                '.article__raw-html',
+                '.email-boost'
             ].forEach(function (selector) {
                 add = $(selector)
                 count += add.length
@@ -46,21 +50,31 @@ stuff_helper = (function (stuff_helper, document) {
             const beg = $('.support-brief-container, .t0')
             console.log(beg.length + ' begging panels hidden')
             beg.hide()
+
+
+            $('aside').remove()
+            const premium = $('span:hidden, p:hidden')
+            let content = ''
+            premium.each(function (paragraph) { 
+                content += $(this).text() + '<br><br>'
+            })
+            $('span.ellipsis').after('<p>' + content + '</p>')
         },
 
         removeShareIcons: function () {
             console.log('removeShareIcons')
-            $('.sics-component__sharebar, .sics-component__masthead').remove()
+            $('.sics-component__sharebar, .sics-component__masthead, .share-bar, .article__action-bar').hide()
         },
 
         removeStoryImages: function () {
             console.log('removeStoryImages')
-            $('.sics-component__story-image, .sics-component__story-video, .sics-component__html-asset').remove()
+            $('.sics-component__story-image, .sics-component__story-video, .sics-component__html-asset, .article-media__hero-wrapper').remove()
         },
 
         fullWidthStory: function () {
             console.log('fullWidthStory')
             $('.sics-component__story').css('margin', '0')
+            $('article.article').css('display', 'inherit')
         },
 
 
